@@ -1,8 +1,9 @@
 import { registerRootComponent } from "expo";
 import { StatusBar } from "expo-status-bar";
+import { type FC } from "react";
 import { StyleSheet, View, Text } from "react-native";
 
-const App = () => {
+const App: FC = () => {
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
