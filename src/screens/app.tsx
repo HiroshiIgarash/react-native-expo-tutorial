@@ -1,7 +1,7 @@
+import { type FC } from "react";
+import { StyleSheet, Text, View } from "react-native";
 import { registerRootComponent } from "expo";
 import { StatusBar } from "expo-status-bar";
-import { type FC } from "react";
-import { StyleSheet, View, Text } from "react-native";
 
 const App: FC = () => {
   return (
