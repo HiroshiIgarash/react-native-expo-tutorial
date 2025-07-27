@@ -12,6 +12,8 @@ const PlaceholderImage =
 
 const App: FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [showAppOptions, setShowAppOptions] = useState(false);
+
   const pickImageAsync = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
@@ -20,6 +22,7 @@ const App: FC = () => {
 
     if (!result.canceled) {
       setSelectedImage(result.assets[0].uri);
+      setShowAppOptions(true);
     } else {
       alert("画像が選択されていません");
     }
@@ -32,10 +35,17 @@ const App: FC = () => {
           selectedImage={selectedImage}
         />
       </View>
-      <View style={styles.footerContainer}>
-        <Button label="写真を選択" theme="primary" onPress={pickImageAsync} />
-        <Button label="この写真を使用" />
-      </View>
+      {showAppOptions ? (
+        <View />
+      ) : (
+        <View style={styles.footerContainer}>
+          <Button label="写真を選択" theme="primary" onPress={pickImageAsync} />
+          <Button
+            label="この写真を使用"
+            onPress={() => setShowAppOptions(true)}
+          />
+        </View>
+      )}
       <StatusBar style="auto" />
     </View>
   );
