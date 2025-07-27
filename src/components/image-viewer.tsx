@@ -8,12 +8,16 @@ import {
 
 type ImageViewerProps = {
   placeholderImageSource: ImageSourcePropType;
+  selectedImage: string | null;
 };
 
 export const ImageViewer: FC<ImageViewerProps> = (props) => {
+  const imageSource = props.selectedImage
+    ? { uri: props.selectedImage }
+    : props.placeholderImageSource;
   return (
     <View style={styles.imageContainer}>
-      <Image source={props.placeholderImageSource} style={styles.image} />
+      <Image source={imageSource} style={styles.image} />
     </View>
   );
 };
